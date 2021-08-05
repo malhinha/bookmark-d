@@ -1,8 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './pages/app';
+import { BrowserRouter as Router } from 'react-router-dom';
+import App from './App';
 import 'bootstrap/scss/bootstrap.scss';
 
-const app = document.getElementById('app');
-
-ReactDOM.render(<App />, app);
+ReactDOM.render(
+	<React.StrictMode>
+		<Router>
+			<App />
+		</Router>
+	</React.StrictMode>,
+	document.getElementById('app')
+);

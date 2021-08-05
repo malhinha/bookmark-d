@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BookmarkList from '../components/BookmarkList';
 import AddBookmark from '../components/AddBookmark';
 
-export default function App() {
+export default function Main() {
 	// set bookmarks state
 	const [bookmarks, setBookmarks] = useState([]);
 

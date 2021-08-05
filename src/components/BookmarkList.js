@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function BookmarkList(props) {
 	return (
@@ -6,9 +7,9 @@ export default function BookmarkList(props) {
 			{props.bookmarks.map((bookmark, i) => {
 				return (
 					<li key={bookmark._id}>
-						<a href={bookmark.url}>{bookmark.title}</a>
+						<Link to={`/${bookmark._id}`}>{bookmark.title}</Link>
 						<br />
-						{bookmark.url}
+						<a href={bookmark.url}>{bookmark.url}</a>
 					</li>
 				);
 			})}
