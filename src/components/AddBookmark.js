@@ -4,7 +4,7 @@ export default function AddBookmark({ handleData }) {
 	// set single bookmark state
 	const [singleBookmark, setBookmark] = useState({
 		title: '',
-		url: ''
+		url: 'http://'
 	});
 
 	// capture data in textfields

@@ -9,7 +9,9 @@ export default function BookmarkList(props) {
 					<li key={bookmark._id}>
 						<Link to={`/${bookmark._id}`}>{bookmark.title}</Link>
 						<br />
-						<a href={bookmark.url}>{bookmark.url}</a>
+						<a href={bookmark.url} target="_blank">
+							{bookmark.url}
+						</a>
 					</li>
 				);
 			})}
