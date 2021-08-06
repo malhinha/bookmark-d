@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import UpdateBookmark from '../components/UpdateBookmark';
+import DisplayBookmark from '../components/Bookmark';
 
 export default function Show(props) {
 	// set bookmark state
@@ -21,6 +22,15 @@ export default function Show(props) {
 		})();
 	}, []);
 
+	// toggle display of update form
+	const toggleForm = () => {
+		if (!showForm) {
+			setShowForm(true);
+		} else {
+			setShowForm(false);
+		}
+	};
+
 	// update bookmark
 	const putBookmark = async (newTitle, newUrl) => {
 		try {
@@ -38,14 +48,6 @@ export default function Show(props) {
 			setBookmark(data);
 		} catch (error) {
 			console.error(error);
-		}
-	};
-
-	const toggleForm = () => {
-		if (!showForm) {
-			setShowForm(true);
-		} else {
-			setShowForm(false);
 		}
 	};
 
@@ -74,15 +76,11 @@ export default function Show(props) {
 
 			{Object.keys(bookmark).length ? (
 				<>
-					<h3>{bookmark.title}</h3>
-					<p>
-						<a href={bookmark.url} target="_blank">
-							{bookmark.url}
-						</a>
-					</p>
-
-					<button onClick={toggleForm}>Edit</button>
-					<button onClick={handleDelete}>Delete</button>
+					<DisplayBookmark
+						bookmark={bookmark}
+						toggleForm={toggleForm}
+						handleDelete={handleDelete}
+					/>
 				</>
 			) : (
 				<h1> Loading...</h1>
