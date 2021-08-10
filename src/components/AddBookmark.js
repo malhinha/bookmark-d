@@ -37,8 +37,8 @@ export default function AddBookmark({ handleData }) {
 	};
 
 	return (
-		<div className="col-4">
-			<div className="card">
+		<div className="col-12 col-md-5 col-lg-4">
+			<div className="card mt-1">
 				<div className="card-body">
 					<h5 className="card-title">Add a new bookmark:</h5>
 					<form onSubmit={handleSubmit}>
