@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Header from '../components/Header';
 import BookmarkList from '../components/BookmarkList';
 import AddBookmark from '../components/AddBookmark';
 
@@ -47,10 +48,14 @@ export default function Main() {
 	};
 
 	return (
-		<div className="AppPage">
-			<h1>Bookmarks</h1>
-			<AddBookmark handleData={postBookmark} />
-			<BookmarkList bookmarks={bookmarks} />
-		</div>
+		<>
+			<Header />
+			<div className="container mt-3" id="main">
+				<main className="row">
+					<BookmarkList bookmarks={bookmarks} />
+					<AddBookmark handleData={postBookmark} />
+				</main>
+			</div>
+		</>
 	);
 }

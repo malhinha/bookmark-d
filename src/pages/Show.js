@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
 import UpdateBookmark from '../components/UpdateBookmark';
 import DisplayBookmark from '../components/Bookmark';
 
@@ -69,26 +70,34 @@ export default function Show(props) {
 	};
 
 	return (
-		<div>
-			<Link to={'/'}>
-				<button>Back to list</button>
-			</Link>
+		<>
+			<Header />
+			<div className="container">
+				<div className="row">
+					<div className="col-12 mt-4 mb-4">
+						<Link to={'/'}>
+							<button className="btn btn-outline-primary">Back to list</button>
+						</Link>
+					</div>
+				</div>
+				{Object.keys(bookmark).length ? (
+					<>
+						<DisplayBookmark
+							bookmark={bookmark}
+							toggleForm={toggleForm}
+							handleDelete={handleDelete}
+						/>
+					</>
+				) : (
+					<div className="col-12">
+						<h1> Loading...</h1>
+					</div>
+				)}
 
-			{Object.keys(bookmark).length ? (
-				<>
-					<DisplayBookmark
-						bookmark={bookmark}
-						toggleForm={toggleForm}
-						handleDelete={handleDelete}
-					/>
-				</>
-			) : (
-				<h1> Loading...</h1>
-			)}
-
-			{showForm && (
-				<UpdateBookmark bookmark={bookmark} handleData={putBookmark} />
-			)}
-		</div>
+				{showForm && (
+					<UpdateBookmark bookmark={bookmark} handleData={putBookmark} />
+				)}
+			</div>
+		</>
 	);
 }

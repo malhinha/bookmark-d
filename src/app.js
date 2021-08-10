@@ -3,7 +3,7 @@ import React from 'react';
 // Import React route, switch
 import { Route, Switch } from 'react-router-dom';
 
-// Import components
+// Import page components
 import Main from './pages/Main';
 import Show from './pages/Show';
 

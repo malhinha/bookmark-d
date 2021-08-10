@@ -37,22 +37,37 @@ export default function AddBookmark({ handleData }) {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<input
-				type="text"
-				id="title"
-				placeholder="Website"
-				value={singleBookmark.title}
-				onChange={handleChange}
-			/>
-			<input
-				type="text"
-				id="url"
-				placeholder="URL"
-				value={singleBookmark.url}
-				onChange={handleChange}
-			/>
-			<input type="submit" value="Add Bookmark" />
-		</form>
+		<div className="col-4">
+			<div className="card">
+				<div className="card-body">
+					<h5 className="card-title">Add a new bookmark:</h5>
+					<form onSubmit={handleSubmit}>
+						<div className="form-group">
+							<input
+								type="text"
+								className="form-control mb-3"
+								id="title"
+								placeholder="Website"
+								value={singleBookmark.title}
+								onChange={handleChange}
+							/>
+							<input
+								type="text"
+								className="form-control mb-3"
+								id="url"
+								placeholder="URL"
+								value={singleBookmark.url}
+								onChange={handleChange}
+							/>
+							<input
+								type="submit"
+								value="Add Bookmark"
+								className="btn btn-primary"
+							/>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	);
 }

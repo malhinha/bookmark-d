@@ -1,20 +1,35 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import BookmarkDate from './BookmarkDate';
 
 export default function BookmarkList(props) {
 	return (
-		<ul>
-			{props.bookmarks.map((bookmark, i) => {
-				return (
-					<li key={bookmark._id}>
-						<Link to={`/${bookmark._id}`}>{bookmark.title}</Link>
-						<br />
-						<a href={bookmark.url} target="_blank">
-							{bookmark.url}
-						</a>
-					</li>
-				);
-			})}
-		</ul>
+		<>
+			<div className="col-8">
+				<h2 className="pb-3 pt-3" fontWeight="600">
+					John's <strong>Bookmarks</strong>
+				</h2>
+				<ul className="list-group list-group-flush bg-white pt-2">
+					{props.bookmarks.map((bookmark, i) => {
+						return (
+							<li key={bookmark._id} className="list-group-item">
+								<div className="listItem">
+									<BookmarkDate bookmark={bookmark} />
+									<p>
+										<strong>
+											<Link to={`/${bookmark._id}`}>{bookmark.title}</Link>
+										</strong>
+										<br />
+										<a href={bookmark.url} target="_blank">
+											{bookmark.url}
+										</a>
+									</p>
+								</div>
+							</li>
+						);
+					})}
+				</ul>
+			</div>
+		</>
 	);
 }
