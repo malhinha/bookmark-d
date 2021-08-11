@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import BookmarkDate from './BookmarkDate';
+import BookmarkListItem from './BookmarkListItem';
 
 export default function BookmarkList(props) {
 	return (
@@ -17,15 +17,7 @@ export default function BookmarkList(props) {
 									<li key={bookmark._id} className="list-group-item">
 										<div className="listItem">
 											<BookmarkDate bookmark={bookmark} />
-											<p>
-												<strong>
-													<Link to={`/${bookmark._id}`}>{bookmark.title}</Link>
-												</strong>
-												<br />
-												<a href={bookmark.url} target="_blank">
-													{bookmark.url}
-												</a>
-											</p>
+											<BookmarkListItem bookmark={bookmark} />
 										</div>
 									</li>
 								);

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import UpdateBookmark from '../components/UpdateBookmark';
-import DisplayBookmark from '../components/Bookmark';
+import BookmarkDetail from '../components/BookmarkDetail';
 
 export default function Show(props) {
 	// set bookmark state
@@ -82,7 +82,7 @@ export default function Show(props) {
 				</div>
 				{Object.keys(bookmark).length ? (
 					<>
-						<DisplayBookmark
+						<BookmarkDetail
 							bookmark={bookmark}
 							toggleForm={toggleForm}
 							handleDelete={handleDelete}
