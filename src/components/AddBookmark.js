@@ -21,6 +21,7 @@ export default function AddBookmark({ handleData }) {
 		}
 	};
 
+	// send data capture back to Main
 	const handleSubmit = e => {
 		e.preventDefault();
 
