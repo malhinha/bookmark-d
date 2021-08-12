@@ -33,7 +33,7 @@ export default function Show(props) {
 	};
 
 	// update bookmark
-	const putBookmark = async (newTitle, newUrl) => {
+	const putBookmark = async (newTitle, newUrl, newTags) => {
 		try {
 			const response = await fetch(`/api/bookmarks/${props.match.params.id}`, {
 				method: 'PUT',
@@ -42,7 +42,8 @@ export default function Show(props) {
 				},
 				body: JSON.stringify({
 					title: newTitle,
-					url: newUrl
+					url: newUrl,
+					tags: newTags
 				})
 			});
 			const data = await response.json();

@@ -4,12 +4,21 @@ export default function AddBookmark({ handleData }) {
 	// set single bookmark state
 	const [singleBookmark, setBookmark] = useState({
 		title: '',
-		url: 'http://'
+		url: 'http://',
+		tags: ['']
 	});
 
 	// capture data in textfields
 	const handleChange = e => {
-		setBookmark({ ...singleBookmark, [e.target.id]: e.target.value });
+		if (e.target.id == 'tags') {
+			// let tagsArray = e.target.value.split(' ');
+			setBookmark({
+				...singleBookmark,
+				[e.target.id]: e.target.value.split(',')
+			});
+		} else {
+			setBookmark({ ...singleBookmark, [e.target.id]: e.target.value });
+		}
 	};
 
 	const handleSubmit = e => {
@@ -32,7 +41,8 @@ export default function AddBookmark({ handleData }) {
 		// clear out state
 		setBookmark({
 			title: '',
-			url: ''
+			url: '',
+			tags: ['']
 		});
 	};
 
@@ -57,6 +67,14 @@ export default function AddBookmark({ handleData }) {
 								id="url"
 								placeholder="URL"
 								value={singleBookmark.url}
+								onChange={handleChange}
+							/>
+							<textarea
+								rows="5"
+								className="form-control mb-3"
+								id="tags"
+								placeholder="Tags (comma separated)"
+								value={singleBookmark.tags}
 								onChange={handleChange}
 							/>
 							<input

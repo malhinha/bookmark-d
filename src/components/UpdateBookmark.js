@@ -4,12 +4,17 @@ export default function UpdateBookmark({ bookmark, handleData }) {
 	// reference fields for pre-population
 	const titleInput = useRef(null);
 	const urlInput = useRef(null);
+	const tagsInput = useRef(null);
 
 	// update bookmark
 	const handleUpdate = async e => {
 		e.preventDefault();
 
-		handleData(titleInput.current.value, urlInput.current.value);
+		handleData(
+			titleInput.current.value,
+			urlInput.current.value,
+			tagsInput.current.value.split(',')
+		);
 	};
 
 	return (
@@ -31,6 +36,14 @@ export default function UpdateBookmark({ bookmark, handleData }) {
 							className="form-control"
 							ref={urlInput}
 							defaultValue={bookmark.url}
+						/>
+
+						<label className="mt-3">Tags (comma separated): </label>
+						<textarea
+							rows="3"
+							className="form-control"
+							ref={tagsInput}
+							defaultValue={bookmark.tags}
 						/>
 
 						<input

@@ -13,7 +13,14 @@ export default function Main() {
 			try {
 				const response = await fetch('/api/bookmarks');
 				const data = await response.json();
-				setBookmarks(data);
+				// sort bookmarks by date, descending
+				const resortedData = data.sort(function(a, b) {
+					if (a.updatedAt > b.updatedAt) return -1;
+					if (a.updatedAt < b.updatedAt) return 1;
+					return 0;
+				});
+
+				setBookmarks(resortedData);
 			} catch (error) {
 				console.error(error);
 			}
@@ -35,8 +42,15 @@ export default function Main() {
 			// recieve data & turn it into js object/array
 			const data = await response.json();
 
+			// sort bookmarks by date, descending
+			const resortedData = [...bookmarks, data].sort(function(a, b) {
+				if (a.updatedAt > b.updatedAt) return -1;
+				if (a.updatedAt < b.updatedAt) return 1;
+				return 0;
+			});
+
 			// move that js object/array into state & db
-			setBookmarks([...bookmarks, data]);
+			setBookmarks(resortedData);
 		} catch (error) {
 			// display error for backend developer
 			console.error(error);
