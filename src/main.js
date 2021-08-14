@@ -1,6 +1,6 @@
 class Test {
 	main = () => {
-		console.log('what is this all for?!?!?');
+		console.log('what is this for?!?!?');
 	};
 }
 // test
